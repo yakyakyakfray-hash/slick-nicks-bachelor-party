@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0c0a09">
+<title>Slick Nick's · Nashville 🎸</title>
+<style>
+  :root{
+    --bg:#0c0a09; --panel:#1c1712; --panel2:#241d16; --border:#352b20;
+    --txt:#f5ede2; --mut:#a99a86; --accent:#ff7a18; --accent2:#ffb347; --gold:#ffd166;
+    --green:#3ec46d; --red:#ff6b5e; --nash:#d05bdd; --nash2:#3d1142;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--txt);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:var(--accent2);text-decoration:none}
+  .wrap{max-width:540px;margin:0 auto;padding:0 16px 50px}
+
+  .hero{position:relative;text-align:center;padding:58px 18px 34px;overflow:hidden;
+    background:radial-gradient(120% 80% at 50% -10%,#3a1142 0%,#1a0a1d 45%,var(--bg) 80%)}
+  .hero:before{content:"";position:absolute;inset:0;
+    background:radial-gradient(60% 40% at 80% 8%,rgba(208,91,221,.22),transparent 60%),
+      radial-gradient(50% 40% at 12% 28%,rgba(255,122,24,.14),transparent 60%);pointer-events:none}
+  .guitar{font-size:54px;line-height:1;filter:drop-shadow(0 6px 16px rgba(208,91,221,.5));animation:bob 3.5s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-7px) rotate(4deg)}}
+  .hero .tag{font-size:12px;letter-spacing:3px;color:var(--nash);font-weight:800;text-transform:uppercase;margin-top:10px}
+  .hero h1{font-size:38px;line-height:1.02;margin:8px 0 6px;letter-spacing:-.5px;
+    background:linear-gradient(180deg,#fff 10%,var(--gold) 55%,var(--accent) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .sub{color:var(--mut);font-size:14px;margin-top:8px;max-width:360px;margin-inline:auto}
+  .heroband{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:16px}
+  .chip{background:rgba(36,29,22,.8);border:1px solid var(--border);border-radius:30px;padding:7px 13px;font-size:12.5px;font-weight:600}
+  .chip b{color:var(--gold)}
+  .locked{display:inline-flex;align-items:center;gap:6px;background:rgba(62,196,109,.15);border:1px solid rgba(62,196,109,.4);color:#7ee59b;font-size:12px;font-weight:800;padding:5px 12px;border-radius:20px;margin-top:14px;letter-spacing:.5px}
+
+  section{padding:30px 0 6px}
+  .eyebrow{font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);font-weight:800;margin-bottom:6px}
+  h2{font-size:25px;letter-spacing:-.4px;margin-bottom:5px;line-height:1.1}
+  .lead{color:var(--mut);font-size:14px;margin-bottom:16px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:14px}
+
+  /* budget */
+  .budget .brow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--border)}
+  .budget .brow:first-child{padding-top:0}
+  .budget .bl{display:flex;align-items:center;gap:11px;font-size:13.5px;font-weight:700}
+  .budget .bl .bi{font-size:18px;flex:0 0 auto}
+  .budget .bsub{font-size:11px;color:var(--mut);font-weight:500;display:block;margin-top:1px}
+  .budget .bv{font-size:14.5px;font-weight:900;color:var(--gold);white-space:nowrap}
+  .budget .total{margin-top:4px;padding-top:14px;border-top:2px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+  .budget .total .tl{font-size:13.5px;font-weight:900;text-transform:uppercase;letter-spacing:.5px}
+  .budget .total .tv{font-size:24px;font-weight:900;color:var(--gold);line-height:1}
+  .bandnote{font-size:12px;color:var(--mut);text-align:center;margin-top:2px}
+  .bandnote b{color:var(--gold)}
+
+  /* crew */
+  .crew{display:flex;flex-wrap:wrap;gap:8px}
+  .guy{display:flex;align-items:center;gap:8px;background:var(--panel2);border:1px solid var(--border);border-radius:30px;padding:7px 14px 7px 8px;font-size:13.5px;font-weight:700}
+  .guy .av{width:26px;height:26px;border-radius:50%;background:linear-gradient(160deg,var(--nash),var(--accent));color:#fff;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center}
+  .guy.tbd{opacity:.55}
+  .guy.tbd .av{background:var(--panel);border:1px dashed var(--mut);color:var(--mut)}
+  .crewnote{font-size:12px;color:var(--mut);margin-top:10px}
+
+  /* areas */
+  .areas .area{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
+  .areas .area:last-child{border-bottom:none}
+  .areas .an{font-weight:800;font-size:13.5px}
+  .areas .av2{font-size:11.5px;color:var(--mut);margin-top:1px}
+  .areas .ad{font-size:11.5px;color:var(--accent2);font-weight:800;white-space:nowrap;text-align:right;flex:0 0 auto;align-self:center}
+
+  /* compare box */
+  .compare{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--accent);border-left-width:3px;border-radius:0 14px 14px 0}
+  .compare h4{font-size:14px;margin-bottom:8px}
+  .compare p{font-size:13px;color:var(--mut)}
+  .compare b{color:var(--gold)}
+  .compare .verified{font-size:10.5px;color:var(--green);font-weight:800;margin-top:8px;text-transform:uppercase;letter-spacing:.4px}
+  .goodbox{font-size:12.5px;color:var(--txt);background:rgba(62,196,109,.1);border:1px solid rgba(62,196,109,.4);border-radius:12px;padding:12px 14px;margin-bottom:14px}
+  .goodbox b{color:#7ee59b}
+
+  /* houses */
+  .tierlbl{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin:18px 0 10px;color:var(--green)}
+  .house{display:block;background:var(--panel);border:1px solid rgba(62,196,109,.32);border-radius:14px;padding:14px 15px;margin-bottom:11px;position:relative;overflow:hidden}
+  .hphoto{display:block;width:calc(100% + 30px);height:150px;object-fit:cover;margin:-14px -15px 13px;background:var(--panel2)}
+  .plat{position:absolute;top:10px;left:10px;z-index:2;font-size:10px;font-weight:900;letter-spacing:.6px;padding:4px 10px;border-radius:7px;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+  .plat.vrbo{background:#1668e3;color:#fff}
+  .plat.abnb{background:#ff385c;color:#fff}
+  .house .hn{font-weight:800;font-size:15px;line-height:1.25;color:var(--txt)}
+  .badge{display:inline-block;font-size:9px;font-weight:900;letter-spacing:.5px;padding:2px 7px;border-radius:6px;margin-left:6px;vertical-align:middle}
+  .b-live{background:var(--green);color:#04210f}
+  .b-grp{background:var(--nash);color:#fff}
+  .b-fit{background:rgba(255,209,102,.16);color:var(--gold);border:1px solid rgba(255,209,102,.45)}
+  .b-val{background:var(--accent);color:#fff}
+  .house .loc{font-size:11.5px;font-weight:700;color:var(--accent2);margin-top:7px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+  .house .hd{font-size:12.5px;color:var(--mut);margin-top:6px}
+  .house .feat{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+  .house .feat span{font-size:11px;background:var(--panel2);border:1px solid var(--border);border-radius:6px;padding:3px 8px;color:var(--txt)}
+  .rules{font-size:11.5px;font-weight:600;color:var(--mut);margin-top:9px;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+  .rules b{color:var(--txt)}
+  .rb{font-size:10px;font-weight:800;padding:2px 7px;border-radius:6px;letter-spacing:.2px}
+  .rb.ok{background:rgba(62,196,109,.16);color:#7ee59b;border:1px solid rgba(62,196,109,.4)}
+  .rb.warn{background:rgba(227,179,65,.16);color:var(--accent2);border:1px solid rgba(227,179,65,.4)}
+  .rb.std{background:var(--panel2);color:var(--mut);border:1px solid var(--border)}
+  .ptable{margin-top:11px;border-top:1px solid var(--border);padding-top:10px;display:grid;grid-template-columns:1fr auto auto;gap:6px 14px;align-items:center}
+  .pth{font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:var(--mut);font-weight:800;text-align:right}
+  .pth.l{text-align:left}
+  .ptl{font-size:12.5px;font-weight:700;color:var(--txt)}
+  .pttot{border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:1px}
+  .ptv{font-size:15px;font-weight:900;color:var(--gold);text-align:right;white-space:nowrap;border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:1px}
+  .ptp{font-size:13.5px;font-weight:800;color:var(--accent2);text-align:right;white-space:nowrap}
+  .ptl.cur,.ptp.cur{color:var(--gold)}
+  .ptp.na{color:var(--mut);font-weight:600}
+  .house .go{display:inline-block;margin-top:11px;font-size:12.5px;font-weight:800;color:var(--accent2)}
+  .foot{font-size:11.5px;color:var(--mut);margin-top:10px;line-height:1.55}
+  .foot b{color:var(--accent2)}
+  .foot .sup{color:var(--accent2);font-weight:800}
+  .searchrow{display:flex;gap:9px;margin:14px 0 4px}
+  .searchrow a{flex:1;text-align:center;background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:13px 10px;font-size:13px;font-weight:800;color:var(--txt)}
+  .searchrow a b{display:block;font-size:11px;color:var(--mut);font-weight:600;margin-top:2px}
+
+  footer{text-align:center;color:var(--mut);font-size:11.5px;padding:26px 16px 10px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="guitar">🎸</div>
+  <div class="tag">Music City · The Last Rodeo</div>
+  <h1>NICK DOES NASHVILLE</h1>
+  <div class="sub">Crew, budget, and the cribs — every house here is live-priced and open for our weekend.</div>
+  <div class="locked">✅ NASHVILLE LOCKED · SEP 11</div>
+  <div class="heroband">
+    <span class="chip">📅 <b>2 or 3 nights?</b></span>
+    <span class="chip">👥 <b>10</b> in · 3 TBD</span>
+    <span class="chip">✈️ <b>4</b> booked</span>
+    <span class="chip">🏠 <b>8</b> open</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 1 · CREW -->
+  <section id="crew">
+    <div class="eyebrow">Roll call</div>
+    <h2>🤠 The Crew</h2>
+    <p class="lead">Ten locked, three still on the fence — up to 13 of us. Lock in so we size the house right.</p>
+    <div class="card">
+      <div class="crew">
+        <span class="guy"><span class="av">🤵</span>Nick — the man</span>
+        <span class="guy"><span class="av">JM</span>Jon Metz</span>
+        <span class="guy"><span class="av">ZF</span>Zach Fray ✈️</span>
+        <span class="guy"><span class="av">CJ</span>CJ Lello</span>
+        <span class="guy"><span class="av">DH</span>Dan Hoffner ✈️</span>
+        <span class="guy"><span class="av">DC</span>Denny</span>
+        <span class="guy"><span class="av">AK</span>Amit</span>
+        <span class="guy"><span class="av">MM</span>Mallack</span>
+        <span class="guy"><span class="av">RY</span>Ryan ✈️</span>
+        <span class="guy"><span class="av">TY</span>Tyler ✈️</span>
+        <span class="guy tbd"><span class="av">?</span>Scribbles — TBD</span>
+        <span class="guy tbd"><span class="av">?</span>Sumit — TBD</span>
+        <span class="guy tbd"><span class="av">?</span>Malkit — TBD</span>
+      </div>
+      <div class="crewnote">✅ 10 confirmed (incl. Nick) · ✈️ flights booked: Zach, Ryan, Dan, Tyler · ⏳ Scribbles, Sumit, Malkit unconfirmed · 🔝 13 max.</div>
+    </div>
+  </section>
+
+  <!-- 2 · 2 NIGHTS VS 3 NIGHTS -->
+  <section id="timing">
+    <div class="eyebrow">Timing</div>
+    <h2>📊 2 Nights vs 3 Nights</h2>
+    <p class="lead">Same house, one more night — here's what it costs.</p>
+    <div class="card compare">
+      <h4>The extra night</h4>
+      <p>A 3rd night adds anywhere from <b>~$240</b> (Skyline Rooftop) to <b>~$710</b> (the Gulch) to the whole house — roughly <b>+$25–80 per paying head</b> (Nick's covered). Per-night actually drops the longer you stay.</p>
+      <div class="verified">✓ Availability + prices pulled live Jun 28 for Sep 2026 · re-check before booking</div>
+    </div>
+    <div class="goodbox">✅ <b>Good news on size:</b> almost every crib below sleeps <b>13+</b> and is open — so even if all 13 come, we're covered. (Only the Gulch &amp; Lux cap at 12.)</div>
+  </section>
+
+  <!-- 3 · CRIBS -->
+  <section id="crib">
+    <div class="eyebrow">The crib</div>
+    <h2>🏠 Nashville Cribs</h2>
+    <p class="lead">All live-priced and <b>confirmed open for Sep 11–13</b>. (Dropped the Double Shot &amp; SkyHaus — both already booked.) Per-person splits the house among everyone but Nick.<span class="sup" style="color:var(--accent2);font-weight:800">¹</span></p>
+
+    <div class="tierlbl">✅ Available — best value first</div>
+
+    <a class="house" href="https://www.vrbo.com/2405334?adults=13&chkin=2026-09-11&chkout=2026-09-13" target="_blank" rel="noopener">
+      <span class="plat vrbo">VRBO</span>
+      <img class="hphoto" loading="lazy" referrerpolicy="no-referrer" alt="Music City Getaway" src="https://media.vrbo.com/lodging/70000000/69940000/69938100/69938065/76d9da3b.jpg">
+      <div class="hn">Music City Getaway<span class="badge b-val">CHEAPEST</span><span class="badge b-fit">FITS 13</span></div>
+      <div class="loc">📍 North Nashville · minutes to downtown + Midtown · 🛏️ sleeps 15 (3 BR)</div>
+      <div class="hd">Modern-luxury home, lowest price of the bunch. Only 3 bedrooms though — tighter for 13 (some on pull-outs). 9.2/10 (10 reviews).</div>
+      <div class="feat"><span>💸 Cheapest</span><span>🛏️ 3 BR · sleeps 15</span><span>⭐ 9.2</span></div>
+      <div class="rules">🛏️ <b>3 BR · 2+ BA</b> · min age 25 <span class="rb warn">⚠️ 3 BR · couch-heavy</span> <span class="rb warn">strict no-party</span></div>
+      <div class="ptable">
+        <span class="pth l">Guys going<span class="sup">¹</span></span><span class="pth">2 nights</span><span class="pth">3 nights</span>
+        <span class="ptl pttot">Whole house</span><span class="ptv">$1,008</span><span class="ptv">$1,361</span>
+        <span class="ptl">9 guys</span><span class="ptp">$126</span><span class="ptp">$170</span>
+        <span class="ptl cur">10 guys · now</span><span class="ptp cur">$112</span><span class="ptp cur">$151</span>
+        <span class="ptl">11 guys</span><span class="ptp">$101</span><span class="ptp">$136</span>
+        <span class="ptl">12 guys</span><span class="ptp">$92</span><span class="ptp">$124</span>
+        <span class="ptl">13 guys</span><span class="ptp">$84</span><span class="ptp">$113</span>
+      </div>
+      <span class="go">Open on Vrbo →</span>
+    </a>
+
+    <a class="house" href="https://www.vrbo.com/4720013?adults=13&chkin=2026-09-11&chkout=2026-09-13" target="_blank" rel="noopener">
+      <span class="plat vrbo">VRBO</span>
+      <img class="hphoto" loading="lazy" referrerpolicy="no-referrer" alt="Skyline View Rooftop Deck" src="https://media.vrbo.com/lodging/120000000/119160000/119155000/119154948/61d70adc.jpg">
+      <div class="hn">Skyline View Rooftop Deck<span class="badge b-fit">FITS 13</span></div>
+      <div class="loc">📍 Haynes Area · north of downtown · 🛏️ sleeps 14</div>
+      <div class="hd">4-bed home with a rooftop deck + skyline views. Cheapest of the bunch and still fits the whole crew. 8.4/10 (8 reviews).</div>
+      <div class="feat"><span>🏙️ Rooftop deck</span><span>🌃 Skyline views</span><span>🛏️ 4 BR</span></div>
+      <div class="rules">🛏️ <b>4 BR · 4 BA</b> · min age 18 <span class="rb std">standard rules</span></div>
+      <div class="ptable">
+        <span class="pth l">Guys going<span class="sup">¹</span></span><span class="pth">2 nights</span><span class="pth">3 nights</span>
+        <span class="ptl pttot">Whole house</span><span class="ptv">$1,242</span><span class="ptv">$1,483</span>
+        <span class="ptl">9 guys</span><span class="ptp">$155</span><span class="ptp">$185</span>
+        <span class="ptl cur">10 guys · now</span><span class="ptp cur">$138</span><span class="ptp cur">$165</span>
+        <span class="ptl">11 guys</span><span class="ptp">$124</span><span class="ptp">$148</span>
+        <span class="ptl">12 guys</span><span class="ptp">$113</span><span class="ptp">$135</span>
+        <span class="ptl">13 guys</span><span class="ptp">$104</span><span class="ptp">$124</span>
+      </div>
+      <span class="go">Open on Vrbo →</span>
+    </a>
+
+    <a class="house" href="https://www.vrbo.com/4789661?adults=13&chkin=2026-09-11&chkout=2026-09-13" target="_blank" rel="noopener">
+      <span class="plat vrbo">VRBO</span>
+      <img class="hphoto" loading="lazy" referrerpolicy="no-referrer" alt="Dolly Parton House" src="https://media.vrbo.com/lodging/121000000/120070000/120064200/120064167/ad557572.jpg">
+      <div class="hn">Dolly Parton House — 4 Stories<span class="badge b-fit">FITS 13</span><span class="badge b-live">✓ LIVE</span></div>
+      <div class="loc">📍 East Nashville · minutes to downtown · 🛏️ sleeps 14</div>
+      <div class="hd">4-story Dolly-themed house, full amenities — peak Nashville for the bit. Fits the whole crew. 9.2/10 (9 reviews).</div>
+      <div class="feat"><span>🎤 Dolly themed</span><span>🏠 4 stories</span><span>🛏️ sleeps 14</span><span>⭐ 9.2</span></div>
+      <div class="rules">🛏️ <b>3 BR · 3+ BA</b> · min age 18 <span class="rb ok">✅ events allowed</span> <span class="rb warn">3 BR · couch-heavy</span></div>
+      <div class="ptable">
+        <span class="pth l">Guys going<span class="sup">¹</span></span><span class="pth">2 nights</span><span class="pth">3 nights</span>
+        <span class="ptl pttot">Whole house</span><span class="ptv">$1,380</span><span class="ptv">$1,848</span>
+        <span class="ptl">9 guys</span><span class="ptp">$173</span><span class="ptp">$231</span>
+        <span class="ptl cur">10 guys · now</span><span class="ptp cur">$153</span><span class="ptp cur">$205</span>
+        <span class="ptl">11 guys</span><span class="ptp">$138</span><span class="ptp">$185</span>
+        <span class="ptl">12 guys</span><span class="ptp">$125</span><span class="ptp">$168</span>
+        <span class="ptl">13 guys</span><span class="ptp">$115</span><span class="ptp">$154</span>
+      </div>
+      <span class="go">Open on Vrbo →</span>
+    </a>
+
+    <a class="house" href="https://www.vrbo.com/2437264?adults=13&chkin=2026-09-11&chkout=2026-09-13" target="_blank" rel="noopener">
+      <span class="plat vrbo">VRBO</span>
+      <img class="hphoto" loading="lazy" referrerpolicy="no-referrer" alt="City Hideaway Rooftop Escape" src="https://media.vrbo.com/lodging/71000000/70570000/70569200/70569157/ed7213c6.jpg">
+      <div class="hn">City Hideaway — Rooftop Escape<span class="badge b-val">TOP RATED</span><span class="badge b-fit">FITS 13</span></div>
+      <div class="loc">📍 Fisk/Meharry · north of downtown · 🛏️ sleeps 13</div>
+      <div class="hd">Stunning rooftop, sleeps exactly 13 — best-rated of the bunch at 9.6/10 Exceptional (14 reviews).</div>
+      <div class="feat"><span>🏙️ Rooftop</span><span>🛏️ sleeps 13</span><span>⭐ 9.6 top rated</span></div>
+      <div class="rules">🛏️ <b>3 BR · 4 BA</b> · min age 18 <span class="rb std">standard rules</span> <span class="rb warn">3 BR</span></div>
+      <div class="ptable">
+        <span class="pth l">Guys going<span class="sup">¹</span></span><span class="pth">2 nights</span><span class="pth">3 nights</span>
+        <span class="ptl pttot">Whole house</span><span class="ptv">$1,389</span><span class="ptv">$1,915</span>
+        <span class="ptl">9 guys</span><span class="ptp">$174</span><span class="ptp">$239</span>
+        <span class="ptl cur">10 guys · now</span><span class="ptp cur">$154</span><span class="ptp cur">$213</span>
+        <span class="ptl">11 guys</span><span class="ptp">$139</span><span class="ptp">$192</span>
+        <span class="ptl">12 guys</span><span class="ptp">$126</span><span class="ptp">$174</span>
+        <span class="ptl">13 guys</span><span class="ptp">$116</span><span class="ptp">$160</span>
+      </div>
+      <span class="go">Open on Vrbo →</span>
+    </a>
+
+    <a class="house" href="https://www.vrbo.com/4380803?adults=13&chkin=2026-09-11&chkout=2026-09-13" target="_blank" rel="noopener">
+      <span class="plat vrbo">VRBO</span>
+      <img class="hphoto" loading="lazy" referrerpolicy="no-referrer" alt="Nash Honky-Tonk Game Room" src="https://media.vrbo.com/lodging/113000000/112160000/112150600/112150505/ccff13ce.jpg">
+      <div class="hn">Nash Honky-Tonk — Game Room + Arcade<span class="badge b-fit">FITS 13</span><span class="badge b-live">✓ LIVE</span></div>
+      <div class="loc">📍 East Nashville · ~10 min to Broadway · 🛏️ sleeps 22</div>
+      <div class="hd">Built for a crew — arcade machines, pool table, full game room. Tons of space. Rated 10/10 (10 reviews), "Loved by Guests."</div>
+      <div class="feat"><span>🕹️ Arcade</span><span>🎱 Pool table</span><span>🎮 Game room</span><span>⭐ 10/10</span></div>
+      <div class="rules">🛏️ <b>4 BR · 4 BA</b> · min age 22 <span class="rb std">standard rules</span></div>
+      <div class="ptable">
+        <span class="pth l">Guys going<span class="sup">¹</span></span><span class="pth">2 nights</span><span class="pth">3 nights</span>
+        <span class="ptl pttot">Whole house</span><span class="ptv">$1,925</span><span class="ptv">$2,438</span>
+        <span class="ptl">9 guys</span><span class="ptp">$241</span><span class="ptp">$305</span>
+        <span class="ptl cur">10 guys · now</span><span class="ptp cur">$214</span><span class="ptp cur">$271</span>
+        <span class="ptl">11 guys</span><span class="ptp">$193</span><span class="ptp">$244</span>
+        <span class="ptl">12 guys</span><span class="ptp">$175</span><span class="ptp">$222</span>
+        <span class="ptl">13 guys</span><span class="ptp">$160</span><span class="ptp">$203</span>
+      </div>
+      <span class="go">Open on Vrbo →</span>
+    </a>
+
+    <a class="house" href="https://www.vrbo.com/5145251?adults=12&chkin=2026-09-11&chkout=2026-09-13" target="_blank" rel="noopener">
+      <span class="plat vrbo">VRBO</span>
+      <img class="hphoto" loading="lazy" referrerpolicy="no-referrer" alt="The Gulch 13 Beds Rooftop" src="https://media.vrbo.com/lodging/128000000/127230000/127224000/127223994/b16e5b21.jpg">
+      <div class="hn">The Gulch — 13 Beds + Rooftop<span class="badge b-grp">FROM GROUP CHAT</span><span class="badge b-live">✓ LIVE</span></div>
+      <div class="loc">📍 The Gulch · 2 min to Broadway · 🛏️ sleeps 12</div>
+      <div class="hd">🔥 Shared in the chat — entire home, rooftop + putting green, full kitchen + BBQ, garage parking. Rated 10/10 (6 reviews).</div>
+      <div class="feat"><span>🏙️ Rooftop</span><span>⛳ Putting green</span><span>🅿️ Garage</span><span>⭐ 10/10</span></div>
+      <div class="rules">🛏️ <b>4 BR · 4 BA</b> · min age 21 <span class="rb std">standard rules</span></div>
+      <div class="ptable">
+        <span class="pth l">Guys going<span class="sup">¹</span></span><span class="pth">2 nights</span><span class="pth">3 nights</span>
+        <span class="ptl pttot">Whole house</span><span class="ptv">$2,909</span><span class="ptv">$3,616</span>
+        <span class="ptl">9 guys</span><span class="ptp">$364</span><span class="ptp">$452</span>
+        <span class="ptl cur">10 guys · now</span><span class="ptp cur">$323</span><span class="ptp cur">$402</span>
+        <span class="ptl">11 guys</span><span class="ptp">$291</span><span class="ptp">$362</span>
+        <span class="ptl">12 guys · full</span><span class="ptp">$264</span><span class="ptp">$329</span>
+        <span class="ptl">13 guys</span><span class="ptp na">sleeps 12</span><span class="ptp na">—</span>
+      </div>
+      <span class="go">Open on Vrbo →</span>
+    </a>
+
+    <a class="house" href="https://www.airbnb.com/rooms/1004378433651938685?check_in=2026-09-11&check_out=2026-09-13&adults=12" target="_blank" rel="noopener">
+      <span class="plat abnb">Airbnb</span>
+      <img class="hphoto" loading="lazy" referrerpolicy="no-referrer" alt="Lux Party 21 Beds" src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-1004378433651938685/original/690f9503-1a05-46d5-a94b-4557209dda56.jpeg">
+      <div class="hn">Lux Party — 21 Beds<span class="badge b-live">✓ LIVE</span></div>
+      <div class="loc">📍 Near downtown · ~10 min to Broadway · 🛏️ sleeps 12</div>
+      <div class="hd">Rooftop deck w/ skyline views, pool table, 8-person hot tub, neon photo room. Superhost, 4.88 (109 reviews).</div>
+      <div class="feat"><span>🏙️ Rooftop</span><span>♨️ Hot tub</span><span>🎱 Pool table</span><span>⭐ 4.88</span></div>
+      <div class="rules">🛏️ <b>4 BR · 4.5 BA</b> · 21 beds · max 12 <span class="rb ok">✅ party house</span></div>
+      <div class="ptable">
+        <span class="pth l">Guys going<span class="sup">¹</span></span><span class="pth">2 nights</span><span class="pth">3 nights</span>
+        <span class="ptl pttot">Whole house</span><span class="ptv">$3,549</span><span class="ptv">$4,141</span>
+        <span class="ptl">9 guys</span><span class="ptp">$444</span><span class="ptp">$518</span>
+        <span class="ptl cur">10 guys · now</span><span class="ptp cur">$394</span><span class="ptp cur">$460</span>
+        <span class="ptl">11 guys</span><span class="ptp">$355</span><span class="ptp">$414</span>
+        <span class="ptl">12 guys · full</span><span class="ptp">$323</span><span class="ptp">$376</span>
+        <span class="ptl">13 guys</span><span class="ptp na">sleeps 12</span><span class="ptp na">—</span>
+      </div>
+      <span class="go">Open on Airbnb →</span>
+    </a>
+
+    <a class="house" href="https://www.vrbo.com/1733055?adults=13&chkin=2026-09-11&chkout=2026-09-13" target="_blank" rel="noopener">
+      <span class="plat vrbo">VRBO</span>
+      <img class="hphoto" loading="lazy" referrerpolicy="no-referrer" alt="Edge of Gulch 11 Bedrooms" src="https://media.vrbo.com/lodging/40000000/39430000/39420700/39420619/56c32a45.jpg">
+      <div class="hn">Edge of Gulch — 11 Bedrooms<span class="badge b-fit">FITS 13</span><span class="badge b-live">✓ LIVE</span></div>
+      <div class="loc">📍 Edgehill · ~5 min to Broadway · 🛏️ sleeps 21</div>
+      <div class="hd">Big-group flex — 11 bedrooms, 10 baths, steps from the Gulch. Premier Host, rated 10/10 (101 reviews). The splurge pick.</div>
+      <div class="feat"><span>🛏️ 11 BR</span><span>🚿 10 baths</span><span>🏆 Premier Host</span><span>⭐ 10/10</span></div>
+      <div class="rules">🛏️ <b>11 BR · 10 BA</b> · min age 21 <span class="rb ok">✅ a room for everyone</span></div>
+      <div class="ptable">
+        <span class="pth l">Guys going<span class="sup">¹</span></span><span class="pth">2 nights</span><span class="pth">3 nights</span>
+        <span class="ptl pttot">Whole house</span><span class="ptv">$4,561</span><span class="ptv">$6,334</span>
+        <span class="ptl">9 guys</span><span class="ptp">$570</span><span class="ptp">$792</span>
+        <span class="ptl cur">10 guys · now</span><span class="ptp cur">$507</span><span class="ptp cur">$704</span>
+        <span class="ptl">11 guys</span><span class="ptp">$456</span><span class="ptp">$633</span>
+        <span class="ptl">12 guys</span><span class="ptp">$415</span><span class="ptp">$576</span>
+        <span class="ptl">13 guys</span><span class="ptp">$380</span><span class="ptp">$528</span>
+      </div>
+      <span class="go">Open on Vrbo →</span>
+    </a>
+
+    <div class="searchrow">
+      <a href="https://www.vrbo.com/search?destination=Nashville,%20Tennessee&regionId=637&startDate=2026-09-11&endDate=2026-09-13&adults=13&sort=RECOMMENDED" target="_blank" rel="noopener">🔍 More on Vrbo<b>Sep 11–13 · 13 guests · all fees in</b></a>
+      <a href="https://www.airbnb.com/s/Nashville--TN/homes?checkin=2026-09-11&checkout=2026-09-13&adults=13&min_bedrooms=4&room_types%5B%5D=Entire%20home%2Fapt" target="_blank" rel="noopener">🔍 More on Airbnb<b>Sep 11–13 · 13 guests</b></a>
+    </div>
+    <div class="foot"><span class="sup">¹</span> <b>Guys going</b> = total on the trip incl. Nick. <b>Nick rides free</b> (he's the groom), so the house splits among everyone else — i.e. one fewer than the row. <b>10 guys · now</b> is our current count (9 paying). More guys = cheaper per head. The Gulch &amp; Lux Party sleep 12, so they can't take all 13.</div>
+    <div class="crewnote">All eight pulled live Jun 28 with all fees included. Fall weekends sell out fast — the Double Shot &amp; SkyHaus already did. Lock one this week.</div>
+  </section>
+
+  <!-- 4 · BUDGET -->
+  <section id="budget">
+    <div class="eyebrow">Ballpark</div>
+    <h2>💰 Budget at a Glance</h2>
+    <p class="lead">Rough per-person, all-in for the weekend. Crib figure uses the real quotes above.</p>
+    <div class="card budget">
+      <div class="brow"><div class="bl"><span class="bi">✈️</span><div>Airfare<span class="bsub">PHL–BNA / IAD–BNA · avg roundtrip</span></div></div><div class="bv">~$275</div></div>
+      <div class="brow"><div class="bl"><span class="bi">🚐</span><div>Uber / Sprinter Van<span class="bsub">Airport runs + nights out, split</span></div></div><div class="bv">~$75</div></div>
+      <div class="brow"><div class="bl"><span class="bi">🏠</span><div>Crib<span class="bsub">Crew split, Nick free · ~$84–570/head (see cribs)</span></div></div><div class="bv">~$215</div></div>
+      <div class="brow"><div class="bl"><span class="bi">🍖</span><div>Grub &amp; Booze<span class="bsub">Groceries, dinners, house liquor</span></div></div><div class="bv">~$200</div></div>
+      <div class="brow"><div class="bl"><span class="bi">🍻</span><div>Bars &amp; Extras<span class="bsub">Broadway tabs, pedal tavern, covers</span></div></div><div class="bv">~$225</div></div>
+      <div class="brow"><div class="bl"><span class="bi">🎲</span><div>Misc<span class="bsub">Tips, koozies, recovery, buffer</span></div></div><div class="bv">~$75</div></div>
+      <div class="total"><div class="tl">All-in / person</div><div class="tv">~$1,050</div></div>
+    </div>
+    <div class="bandnote">Realistic band: <b>~$950–1,400</b> · pick a cheaper crib and it drops fast.</div>
+  </section>
+
+  <!-- 5 · AREAS -->
+  <section id="areas">
+    <div class="eyebrow">Lay of the land</div>
+    <h2>📍 Nashville Areas</h2>
+    <p class="lead">Quick read on where the houses sit and how close to the action.</p>
+    <div class="card">
+      <div class="areas">
+        <div class="area"><div><div class="an">Lower Broadway / SoBro</div><div class="av2">The honky-tonk strip — bars, neon, the main event</div></div><div class="ad">the action</div></div>
+        <div class="area"><div><div class="an">The Gulch / Edgehill</div><div class="av2">Trendy rooftops, cocktail bars, restaurants</div></div><div class="ad">~5 min</div></div>
+        <div class="area"><div><div class="an">Germantown</div><div class="av2">Historic, best food, edge of downtown</div></div><div class="ad">~5 min</div></div>
+        <div class="area"><div><div class="an">East Nashville</div><div class="av2">Artsy, dive bars, great eats — across the river</div></div><div class="ad">~10 min</div></div>
+        <div class="area"><div><div class="an">12 South</div><div class="av2">Boutiques, brunch, Peg Leg Porker BBQ</div></div><div class="ad">~10 min</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Slick Nick's Last Rodeo · Nashville · Sep 11, 2026 · availability &amp; all-in prices pulled live Jun 28 · confirm on the listing before deposits · made for the group chat</footer>
+</div>
+
+</body>
+</html>
